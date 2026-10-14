@@ -595,6 +595,11 @@ image:
     addEventListener("resize", fxCheck);
     addEventListener("load", fxCheck);
     fxCheck();
+    var fxBorn = Date.now();
+    var fxTimer = setInterval(function(){
+      fxCheck();
+      if(document.querySelectorAll(".fx").length === 0 || Date.now() - fxBorn > 60000) clearInterval(fxTimer);
+    }, 800);
   }
 
   document.getElementById("printBtn").addEventListener("click",function(){window.print();});
