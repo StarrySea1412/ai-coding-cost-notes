@@ -189,6 +189,29 @@ caption{text-align:left;padding:12px 0;font-size:12px;color:var(--muted)}
 .lightbox-hint{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);color:#e8e4d8;font-size:12px;font-family:var(--mono);background:#00000055;padding:6px 14px;border-radius:100px}
 .lightbox-close{position:fixed;top:18px;right:22px;background:none;border:1px solid #e8e4d888;color:#e8e4d8;font-size:14px;padding:6px 14px;border-radius:100px}
 .lightbox-close:hover{background:#e8e4d822}
+/* motion */
+.hero h1 em .scrib path{stroke-dasharray:1;stroke-dashoffset:1;animation:scrib-draw 1s .4s cubic-bezier(.65,.05,.35,1) forwards}
+@keyframes scrib-draw{to{stroke-dashoffset:0}}
+.ch-ic,.death-icon,.step-ic{transition:transform .4s cubic-bezier(.2,.8,.3,1.15)}
+.fx{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.8,.3,1.15)}
+.fx-in{opacity:1;transform:none}
+.death-grid .death-card:nth-child(2) .fx{transition-delay:.08s}
+.death-grid .death-card:nth-child(3) .fx{transition-delay:.16s}
+.death-grid .death-card:nth-child(4) .fx{transition-delay:.24s}
+.death-grid .death-card:nth-child(5) .fx{transition-delay:.32s}
+.steps>div:nth-child(2) .fx{transition-delay:.12s}
+.steps>div:nth-child(3) .fx{transition-delay:.24s}
+@media (hover:hover){
+.death-card:hover .death-icon,.steps>div:hover .step-ic,.chapter-head:hover .ch-ic{transform:rotate(-5deg) scale(1.07)}
+}
+.dot-alive svg{animation:dot-breathe 2.4s ease-in-out infinite}
+@keyframes dot-breathe{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion: reduce){
+.hero h1 em .scrib path{animation:none;stroke-dashoffset:0}
+.dot-alive svg{animation:none}
+.fx{opacity:1;transform:none;transition:none}
+}
+
 /* print */
 @media print{
   .progress,.masthead,.print-button,.art-button .zoom-hint,.lightbox{display:none!important}
@@ -228,7 +251,7 @@ caption{text-align:left;padding:12px 0;font-size:12px;color:var(--muted)}
 <section class="wrap hero">
   <div>
     <p class="eyebrow"><span>实测手记</span><strong>写给花钱跑 AI 的人</strong></p>
-    <h1>AI 编程省钱的<em>另一半<svg class="scrib" viewBox="0 0 140 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8 C 28 3, 55 11, 84 6 S 126 3, 137 7" fill="none" stroke="#b7791f" stroke-width="3.6" stroke-linecap="round"/></svg></em></h1>
+    <h1>AI 编程省钱的<em>另一半<svg class="scrib" viewBox="0 0 140 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 8 C 28 3, 55 11, 84 6 S 126 3, 137 7" fill="none" stroke="#b7791f" stroke-width="3.6" stroke-linecap="round"/></svg></em></h1>
     <div class="dek-wrap">
       <p class="dek-tag">dek / 摘要</p>
       <p class="dek">上下文怎么压、习惯怎么改、模型怎么选——上半场已经有很多人讲过了。这篇写账单的另一半：渠道的生死、标价之外的成本、探测的纪律，和一条能救命的降级链。全部来自我自己的实测记录。</p>
@@ -545,6 +568,22 @@ image:
     var k=box.dataset.key;if(saved[k])box.checked=true;
     box.addEventListener("change",function(){saved[k]=box.checked;try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}});
   });
+
+  var reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduceMotion && "IntersectionObserver" in window){
+    var fxEls = document.querySelectorAll(".ch-ic,.death-icon,.step-ic,.checkup,.art");
+    fxEls.forEach(function(el){ el.classList.add("fx"); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add("fx-in");
+          io.unobserve(en.target);
+          setTimeout(function(){ en.target.classList.remove("fx"); }, 1400);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: "0px 0px -30px 0px" });
+    fxEls.forEach(function(el){ io.observe(el); });
+  }
 
   document.getElementById("printBtn").addEventListener("click",function(){window.print();});
 })();
