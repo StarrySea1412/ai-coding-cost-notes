@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>技术栈全景图 · ai-coding-cost-notes</title>
+<style>
+  :root{
+    --bg:#faf7f0;--card:#fffdf7;--ink:#22262b;--muted:#6d7480;--line:#e0dacb;
+    --blue:#2c4a7c;--amber:#b7791f;--green:#3d6b53;--rose:#9c4a52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:960px;background:
+    radial-gradient(50rem 24rem at 85% -6%,#e9eef688,transparent 60%),
+    radial-gradient(36rem 20rem at 0% 100%,#f7e9d266,transparent 55%),
+    var(--bg);
+    color:var(--ink);padding:52px 56px 44px;
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+  .eyebrow{font-family:Consolas,monospace;font-size:12px;letter-spacing:.24em;color:var(--amber);margin-bottom:16px}
+  h1{font-size:42px;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:12px}
+  h1 em{font-style:normal;color:var(--blue)}
+  .sub{font-size:15px;color:var(--muted);letter-spacing:.06em}
+  .sub b{color:var(--ink);font-weight:600}
+  .flow{display:flex;align-items:stretch;margin:30px 0 34px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+  .flow .fcard{flex:1;display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 6px}
+  .flow .fcard b{font-size:14px;letter-spacing:.02em}
+  .flow .fcard span{font-size:11px;color:var(--muted);line-height:1.6}
+  .flow .arrow{display:flex;align-items:center;color:#c3b998;font-size:18px;padding:0 8px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px 18px;position:relative;overflow:hidden}
+  .card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--c)}
+  .chead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .num{font-family:Consolas,monospace;font-size:13px;font-weight:700;color:#fff;background:var(--c);border-radius:6px;padding:3px 8px}
+  .ic{width:30px;height:30px;flex:none;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .ic svg{width:20px;height:20px}
+  .card h3{font-size:16.5px;letter-spacing:.02em}
+  .card h3 small{display:block;font-family:Consolas,monospace;font-size:9.5px;letter-spacing:.16em;color:var(--muted);font-weight:400;margin-top:3px}
+  .card p{font-size:12.5px;line-height:1.85;color:var(--muted)}
+  .card p b{color:var(--ink);font-weight:600}
+  .card p code{font-family:Consolas,monospace;font-size:11px;color:var(--amber);background:#b7791f14;padding:1px 5px;border-radius:4px}
+  .bar{margin-top:20px;background:linear-gradient(90deg,#b7791f14,#2c4a7c14);border:1px solid var(--line);border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:14px}
+  .bar b{color:var(--amber);font-size:15px;letter-spacing:.03em;white-space:nowrap}
+  .bar span{font-size:12.5px;color:var(--muted);line-height:1.8}
+  .foot{margin-top:22px;display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:16px;font-size:11.5px;color:var(--muted)}
+  .foot code{font-family:Consolas,monospace;font-size:10.5px;color:var(--blue)}
+</style>
+</head>
+<body>
+  <p class="eyebrow">STARRYSEA · 造物手记 VOL.01 · TECH STACK</p>
+  <h1>AI 编程省钱的<em>另一半</em></h1>
+  <p class="sub">渠道静默死亡实录 · 三种隐形成本 · 探测纪律与降级链 —— <b>单页杂志风实测长文</b></p>
+
+  <div class="flow">
+    <div class="fcard"><b>渠道体检</b><span>503 / 无号 / 静默死亡<br/>实测实录</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>三种隐形成本</b><span>预扣税 · 重试税<br/>信任税</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>黄金三步</b><span>探测纪律纪律化<br/>四态体检单</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>降级链设计</b><span>配置示例 + 静默兜底<br/>死了自动切</span></div>
+    <div class="arrow">➜</div>
+    <div class="fcard"><b>十项清单</b><span>可点击打勾<br/>localStorage 存进度</span></div>
+  </div>
+
+  <div class="grid">
+    <div class="card" style="--c:var(--blue)">
+      <div class="chead"><span class="num">01</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3.2v3.4M15 3.2v3.4" stroke="#2c4a7c" stroke-width="2" stroke-linecap="round"/><path d="M6.2 6.6h11.6v3.4a5.8 5.8 0 0 1-11.6 0z" fill="#2c4a7c"/><path d="M12 15.6v1.8a2.7 2.7 0 0 0 2.7 2.7h2.3" stroke="#b7791f" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <h3>内容<small>CONTENT</small></h3></div>
+      <p>五章实测长文：渠道为何会「静默死亡」（含 503 <code>no_available_account</code> 实录）、预扣税/重试税/信任税三种隐形成本、黄金三步、降级链、十项自查清单。</p>
+    </div>
+    <div class="card" style="--c:var(--amber)">
+      <div class="chead"><span class="num">02</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l8 4v5c0 4.6-3.2 7.6-8 9-4.8-1.4-8-4.4-8-9v-5z" stroke="#b7791f" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 8.5v4M12 15.6v.4" stroke="#b7791f" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>形态<small>FORMAT</small></h3></div>
+      <p>单文件 <code>index.html</code> 杂志风：米纸 <code>#faf7f0</code> + 深蓝 <code>#2c4a7c</code> + 琥珀 <code>#b7791f</code>；内联 CSS/JS，<b>零依赖零构建</b>，宋体标题排版。</p>
+    </div>
+    <div class="card" style="--c:var(--green)">
+      <div class="chead"><span class="num">03</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="11" rx="1.5" stroke="#3d6b53" stroke-width="1.6"/><path d="M9 19h6" stroke="#3d6b53" stroke-width="1.6" stroke-linecap="round"/><path d="M12 7.4l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z" fill="#b7791f"/></svg></span>
+        <h3>交互层<small>INTERACTION</small></h3></div>
+      <p>阅读进度条 · 插图<b>灯箱放大</b> · 一键复制 · 打印/存 PDF 样式 · 可点击清单（进度存 localStorage）——纯原生实现。</p>
+    </div>
+    <div class="card" style="--c:var(--rose)">
+      <div class="chead"><span class="num">04</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4l1.6 4.6L18 10l-4.4 1.4L12 16l-1.6-4.6L6 10l4.4-1.4z" fill="#9c4a52"/><circle cx="18.5" cy="17.5" r="1.6" stroke="#2c4a7c" stroke-width="1.4"/><path d="M5 18.5h7" stroke="#2c4a7c" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>图标与插图<small>ART</small></h3></div>
+      <p>手绘 SVG 全套：章节图标 ×5 · 死法图标 ×5 · 体检单四态 ×4 · 黄金三步 ×3 + 手绘笔触分隔线；5 张 doodle 插图（webp 约 500KB）。</p>
+    </div>
+    <div class="card" style="--c:var(--blue)">
+      <div class="chead"><span class="num">05</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7.5h16v10H4z" stroke="#2c4a7c" stroke-width="1.6"/><path d="M7.5 11h4M7.5 14h6" stroke="#b7791f" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>合规<small>PRIVACY</small></h3></div>
+      <p>文中<b>渠道信息全部匿名化</b>：只保留行为与数字，不点名具体服务商；所有数据来自 cc-probe 探测 Agent 的真实实测。</p>
+    </div>
+    <div class="card" style="--c:var(--amber)">
+      <div class="chead"><span class="num">06</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 11.5L20.5 4l-4 17-4.6-6.4z" stroke="#b7791f" stroke-width="1.7" stroke-linejoin="round"/><path d="M11.9 14.6L20.5 4" stroke="#2c4a7c" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <h3>发布<small>DEPLOY</small></h3></div>
+      <p>GitHub Pages 静态直发（main 根目录 + <code>.nojekyll</code>），<b>无 CI 无打包</b>；改一处 push 即全网更新。</p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <b>亮点总结</b>
+    <span>单页杂志风 · 全文实测数据 · 渠道匿名化处理 · 清单可存进度 · 打印友好 · 零依赖零构建</span>
+  </div>
+  <div class="foot">
+    <span>造物手记 VOL.01 · AI 编程省钱的另一半</span>
+    <span><code>starrysea1412.github.io/ai-coding-cost-notes</code></span>
+  </div>
+</body>
+</html>

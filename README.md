@@ -8,6 +8,10 @@
 
 > 文中所有渠道、服务商、域名均已匿名化处理；探测请仅针对你已付费或获得授权的服务。
 
+## 技术栈全景图
+
+<img src="assets/tech-stack.png" width="720" alt="技术栈全景图：单页杂志风实测长文 · 手绘 SVG 图标 · doodle 插图 · GitHub Pages 直发"/>
+
 ---
 
-单页站点由 `index.html` 单文件承载（零构建、零依赖），插图位于 `assets/`。
+单页站点由 `index.html` 单文件承载（零构建、零依赖），插图位于 `assets/`；技术栈全景图源文件在 `docs/tech-stack.html`。
